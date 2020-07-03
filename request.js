@@ -1,7 +1,8 @@
 let request =require("request");
 let fs=require("fs");
 let cheerio = require("cheerio");
-let path= require("path")
+let path= require("path");
+const { kMaxLength } = require("buffer");
 
 request("https://www.worldometers.info/",dataReciver);
 

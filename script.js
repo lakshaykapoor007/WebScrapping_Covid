@@ -2,10 +2,7 @@ let request =require("request");
 let fs=require("fs");
 let cheerio = require("cheerio");
 let path= require("path");
-let converter = require('json-2-csv');
-let filepath;
-
-    
+    let stringObj;
 request("https://www.worldometers.info/",dataReciver);
     
 function dataReciver(err,res,html){
@@ -68,7 +65,7 @@ function parsecountries(html){
     
     
 function handlecountry(cname,tcase,ncase,tdeath,ndeath,trec,acase,scase,casemil,deathmil,ttest,testmil,population) {
-                filePath = path.join("ndata"+cname+ ".xls");
+                let filePath = path.join("ndata"+ ".json");
 
                 if (fs.existsSync(filePath)==false) {
                     fs.openSync(filePath, 'w');
@@ -116,18 +113,13 @@ function handlecountry(cname,tcase,ncase,tdeath,ndeath,trec,acase,scase,casemil,
              newObj.Population = population;
     
              entries.push(newObj);
-            // let stringObj = JSON.stringify(entries);
-           // fs.writeFileSync(filePath, );
-            converter.json2csv(entries, json2csvCallback);
+             stringObj = JSON.stringify(entries);
+            fs.writeFileSync(filePath, stringObj);
           //  convert();
     }}
     
-let json2csvCallback = function (err, csv) {
-        if (err) throw err;
-        fs.writeFileSync(filePath,csv );
-        console.log("done");
-    };
-    
+
+
 
 
 
