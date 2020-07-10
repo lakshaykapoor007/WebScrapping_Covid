@@ -10,7 +10,7 @@ function dataReciver(err,res,html){
     if(err ==null && res.statusCode ==200){
         parsefile(html);
     }else if(res.statusCode ==404){
-        console.log("Page not found");
+        console.log("Error 404 :page not foung");
     }else{
         console.log(err);
         console.log(res);
@@ -18,8 +18,6 @@ function dataReciver(err,res,html){
 }
 function parsefile(html){
     let $ =cheerio.load(html);
-    // let list = $("ul.list-unstyled.mb-0");
-    // fs.writeFileSync("list.html",list);
     let a = $(".linkunderline a").attr("href");
     let fullLink="https://www.worldometers.info"+a;
   // console.log(fullLink);
