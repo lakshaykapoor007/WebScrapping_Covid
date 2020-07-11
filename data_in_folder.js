@@ -42,8 +42,8 @@ function parsecountries(html){
 
   
   for(let i = 8; i < rows.length-9; i++){
-    let colsinEVeryRow = $(rows[i]).find("td");
-
+   
+        let colsinEVeryRow = $(rows[i]).find("td");
         let cname = $(colsinEVeryRow[1]).text();
         let tcase = $(colsinEVeryRow[2]).text();
         let ncase = $(colsinEVeryRow[3]).text();

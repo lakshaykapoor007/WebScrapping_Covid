@@ -3,7 +3,6 @@ let fs=require("fs");
 let cheerio = require("cheerio");
 let path= require("path");
 let converter = require('json-2-csv');
-let filepath;
 
     
 request("https://www.worldometers.info/",dataReciver);
@@ -21,7 +20,7 @@ function dataReciver(err,res,html){
 function parsefile(html){
         let $ =cheerio.load(html);
         // let list = $("ul.list-unstyled.mb-0");
-        // fs.writeFileSync("list.html",list);
+        
         let a = $(".linkunderline a").attr("href");
         let fullLink="https://www.worldometers.info"+a;
       // console.log(fullLink);
